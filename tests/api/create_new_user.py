@@ -9,7 +9,7 @@ load_dotenv()
 BASE_URL = os.getenv("BASE_URL")
 register_payload ={
     "user": {
-        "username": "sergiu_verlan",
+        "username": "sergiu_verlan",    
         "email": os.getenv("TEST_USER_EMAIL"),
         "password": os.getenv("TEST_USER_PASSWORD")
     }
