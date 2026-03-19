@@ -1,3 +1,4 @@
+import pytest
 import requests
 import os
 from dotenv import load_dotenv
@@ -7,6 +8,7 @@ BASE_URL = os.getenv("BASE_URL")
 EMAIL = os.getenv("TEST_USER_EMAIL")
 PASSWORD = os.getenv("TEST_USER_PASSWORD")
 
+@pytest.mark.smoke
 def test_login():
     payload = {
         "user": {
