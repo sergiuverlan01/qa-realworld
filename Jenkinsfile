@@ -19,7 +19,7 @@ pipeline {
         stage('Install Dependencies') {
             steps {
                 sh '''
-                    pip install poetry
+                    pip3 install poetry
                     poetry install
                 '''
             }
