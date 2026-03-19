@@ -20,6 +20,7 @@ pipeline {
             steps {
                 sh '''
                     pip3 install poetry --break-system-packages
+                    export PATH="/var/jenkins_home/.local/bin:$PATH"
                     poetry install
                 '''
             }
@@ -27,7 +28,10 @@ pipeline {
 
         stage('Run Tests') {
             steps {
-                sh "poetry run pytest -m ${params.CAMPAIGN} -v"
+                sh '''
+                 export PATH="/var/jenkins_home/.local/bin:$PATH"
+                 poetry run pytest -m ${params.CAMPAIGN} -v
+                 '''
             }
         }
     }
