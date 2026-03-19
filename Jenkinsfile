@@ -18,20 +18,20 @@ pipeline {
 
         stage('Install Dependencies') {
             steps {
-                sh '''
-                    pip3 install poetry --break-system-packages
-                    export PATH="/var/jenkins_home/.local/bin:$PATH"
-                    poetry install
-                '''
+                sh """
+                pip3 install poetry --break-system-packages
+                export PATH="/var/jenkins_home/.local/bin:\$PATH"
+                poetry install
+                """
             }
         }
 
         stage('Run Tests') {
             steps {
-                sh '''
-                 export PATH="/var/jenkins_home/.local/bin:$PATH"
+                sh """
+                 export PATH="/var/jenkins_home/.local/bin:\$PATH"
                  poetry run pytest -m ${params.CAMPAIGN} -v
-                 '''
+                 """
             }
         }
     }
