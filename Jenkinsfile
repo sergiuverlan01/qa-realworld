@@ -19,7 +19,7 @@ pipeline {
         stage('Install Dependencies') {
             steps {
                 sh '''
-                    pip3 install poetry
+                    pip3 install poetry --break-system-packages
                     poetry install
                 '''
             }
