@@ -1,6 +1,12 @@
 pipeline {
     agent any
 
+    environment {
+        BASE_URL = credentials('BASE_URL')
+        TEST_USER_EMAIL = credentials('TEST_USER_EMAIL')
+        TEST_USER_PASSWORD = credentials('TEST_USER_PASSWORD')
+    }
+
     parameters {
         choice(
             name: 'CAMPAIGN',
@@ -18,11 +24,11 @@ pipeline {
 
         stage('Install Dependencies') {
             steps {
-                sh """
+                sh '''
                 pip3 install poetry --break-system-packages
-                export PATH="/var/jenkins_home/.local/bin:\$PATH"
+                export PATH="/var/jenkins_home/.local/bin:$PATH"
                 poetry install
-                """
+                '''
             }
         }
 
